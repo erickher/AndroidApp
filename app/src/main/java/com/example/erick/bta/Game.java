@@ -92,18 +92,42 @@ public class Game extends AppCompatActivity {
     public void onClick(View view){
         // 2. find button clicked on id by name.
         // 3. test make sure correct.
-        // 4. if correct reload activity.
+        // 4. if correct add element and start animation again.
         if(_flashBackplaying == true) {
             // you lose.
-
         }
         int check;
         System.out.println("insde the onClick method");
-     /*   Intent intent = new Intent(this, Game.class);
-        startActivity(intent);*/
+        switch (view.getId()){
+            case R.id.Red:
+                testCorrect(0);
+                break;
+            case R.id.Blue:
+                testCorrect(1);
+                break;
+        }
+    }
 
-        //start playback if correct.
-        //if(_pattern.get(_listElemToCheck) == )
+    public void testCorrect(int x){
+        if((Integer)_pattern.get(_listElemToCheck) == x){
+            _listElemToCheck++;
+        } else{
+            // you lose
+            _listElemToCheck = 0;
+            _pattern = new ArrayList();
+        }
+
+        if(_listElemToCheck >= _pattern.size()) {
+            // Add new element
+            //if listElemToCheck less less than do this:
+            Random randNum = new Random();
+            Integer r = (randNum.nextInt(100)) % 2;
+            _pattern.add(r);
+            _flashBackplaying = true;
+            startAnimation();
+            _flashBackplaying = false;
+            //else start new scene with more boxes.
+        }
     }
 
     public void quit(View view){
