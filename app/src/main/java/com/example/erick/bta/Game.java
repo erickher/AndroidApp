@@ -19,7 +19,7 @@ public class Game extends AppCompatActivity {
 
     Button _red;
     Button _blue;
-    static ArrayList _pattern = new ArrayList();
+    static ArrayList<Integer> _pattern = new ArrayList<Integer>();
     static int _score;
     boolean _flashBackplaying;
     int _listElemToCheck;
@@ -28,6 +28,7 @@ public class Game extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
         _listElemToCheck = 0;
         _flashBackplaying = true;
         _red = (Button)findViewById(R.id.Red);
@@ -37,6 +38,22 @@ public class Game extends AppCompatActivity {
         _pattern.add(r);
         startAnimation();
         _flashBackplaying = false;
+        _red.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(_flashBackplaying == false){
+                    //not suppose to be pressed when flashing
+                }
+            }
+        });
+        _blue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(_flashBackplaying == false){
+                    //not suppose to be pressed when flashing
+                }
+            }
+        });
     }
 
     public void startAnimation(){
@@ -89,28 +106,6 @@ public class Game extends AppCompatActivity {
         System.out.println("exiting the loop");
     }
 
-    public void onClick(View view){
-        // 2. find button clicked on id by name.
-        // 3. test make sure correct.
-        // 4. if correct reload activity.
-        if(_flashBackplaying == true) {
-            // you lose.
 
-        }
-        int check;
-        System.out.println("insde the onClick method");
-     /*   Intent intent = new Intent(this, Game.class);
-        startActivity(intent);*/
-
-        //start playback if correct.
-        //if(_pattern.get(_listElemToCheck) == )
-    }
-
-    public void quit(View view){
-        // show high score.
-        // new scene to show score and ask if they wanted to play again.
-        _pattern = new ArrayList();
-        System.out.println("insde the quit method");
-    }
 
 }
