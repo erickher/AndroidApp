@@ -19,7 +19,7 @@ public class Game extends AppCompatActivity {
 
     Button _red;
     Button _blue;
-    static ArrayList<Integer> _pattern = new ArrayList<Integer>();
+    static ArrayList _pattern = new ArrayList();
     static int _score;
     boolean _flashBackplaying;
     int _listElemToCheck;
@@ -28,7 +28,6 @@ public class Game extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-
         _listElemToCheck = 0;
         _flashBackplaying = true;
         _red = (Button)findViewById(R.id.Red);
@@ -38,22 +37,6 @@ public class Game extends AppCompatActivity {
         _pattern.add(r);
         startAnimation();
         _flashBackplaying = false;
-        _red.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(_flashBackplaying == false){
-                    //not suppose to be pressed when flashing
-                }
-            }
-        });
-        _blue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(_flashBackplaying == false){
-                    //not suppose to be pressed when flashing
-                }
-            }
-        });
     }
 
     public void startAnimation(){
@@ -106,6 +89,52 @@ public class Game extends AppCompatActivity {
         System.out.println("exiting the loop");
     }
 
+    public void onClick(View view){
+        // 2. find button clicked on id by name.
+        // 3. test make sure correct.
+        // 4. if correct add element and start animation again.
+        if(_flashBackplaying == true) {
+            // you lose.
+        }
+        int check;
+        System.out.println("insde the onClick method");
+        switch (view.getId()){
+            case R.id.Red:
+                testCorrect(0);
+                break;
+            case R.id.Blue:
+                testCorrect(1);
+                break;
+        }
+    }
 
+    public void testCorrect(int x){
+        if((Integer)_pattern.get(_listElemToCheck) == x){
+            _listElemToCheck++;
+        } else{
+            // you lose
+            _listElemToCheck = 0;
+            _pattern = new ArrayList();
+        }
+
+        if(_listElemToCheck >= _pattern.size()) {
+            // Add new element
+            //if listElemToCheck less less than do this:
+            Random randNum = new Random();
+            Integer r = (randNum.nextInt(100)) % 2;
+            _pattern.add(r);
+            _flashBackplaying = true;
+            startAnimation();
+            _flashBackplaying = false;
+            //else start new scene with more boxes.
+        }
+    }
+
+    public void quit(View view){
+        // show high score.
+        // new scene to show score and ask if they wanted to play again.
+        _pattern = new ArrayList();
+        System.out.println("insde the quit method");
+    }
 
 }
