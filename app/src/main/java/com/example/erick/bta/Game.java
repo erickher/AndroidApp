@@ -6,7 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.sql.Time;
 import java.util.ArrayList;
@@ -19,7 +24,8 @@ public class Game extends AppCompatActivity {
 
     Button _red;
     Button _blue;
-    static ArrayList _pattern = new ArrayList();
+    TextView text;
+    static ArrayList<Integer> _pattern ;
     static int _score;
     boolean _flashBackplaying;
     int _listElemToCheck;
@@ -29,9 +35,12 @@ public class Game extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         _listElemToCheck = 0;
+        _score = 0;
         _flashBackplaying = true;
+        _pattern = new ArrayList<Integer>();
         _red = (Button)findViewById(R.id.Red);
         _blue = (Button)findViewById(R.id.Blue);
+        text = (TextView)findViewById(R.id.Score);
         Random randNum = new Random();
         Integer r = ((randNum.nextInt(100))%2);
         _pattern.add(r);
@@ -63,9 +72,8 @@ public class Game extends AppCompatActivity {
                 _red.animate().withStartAction(startWith);
                 _red.animate().withEndAction(endWith);
                 _red.animate().start();
-                /*_red.setBackgroundColor(Color.WHITE);
-
-                _red.setBackgroundColor(Color.RED);*/
+                //_red.setBackgroundColor(Color.WHITE);
+                //_red.setBackgroundColor(Color.RED);
             } else {Runnable endWith = new Runnable() {
                 @Override
                 public void run() {
@@ -88,6 +96,7 @@ public class Game extends AppCompatActivity {
         }
         System.out.println("exiting the loop");
     }
+
 
     public void onClick(View view){
         // 2. find button clicked on id by name.
@@ -113,6 +122,7 @@ public class Game extends AppCompatActivity {
             _listElemToCheck++;
         } else{
             // you lose
+            lose();
             _listElemToCheck = 0;
             _pattern = new ArrayList();
         }
@@ -120,6 +130,9 @@ public class Game extends AppCompatActivity {
         if(_listElemToCheck >= _pattern.size()) {
             // Add new element
             //if listElemToCheck less less than do this:
+            _listElemToCheck = 0;
+            _score++;
+            text.setText(Integer.toString(_score));
             Random randNum = new Random();
             Integer r = (randNum.nextInt(100)) % 2;
             _pattern.add(r);
@@ -130,11 +143,18 @@ public class Game extends AppCompatActivity {
         }
     }
 
+    public void lose(){
+        Intent i = new Intent(Game.this,Score.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("score",Integer.toString(_score));
+        i.putExtras(bundle);
+        startActivity(i);
+    }
+
     public void quit(View view){
         // show high score.
         // new scene to show score and ask if they wanted to play again.
-        _pattern = new ArrayList();
-        System.out.println("insde the quit method");
+        lose();
     }
 
 }
