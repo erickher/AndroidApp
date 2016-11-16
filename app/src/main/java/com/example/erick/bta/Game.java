@@ -132,7 +132,7 @@ public class Game extends AppCompatActivity {
             //if listElemToCheck less less than do this:
             _listElemToCheck = 0;
             _score++;
-            text.setText(Integer.toString(_score));
+            text.setText("Score: " + Integer.toString(_score));
             Random randNum = new Random();
             Integer r = (randNum.nextInt(100)) % 2;
             _pattern.add(r);
