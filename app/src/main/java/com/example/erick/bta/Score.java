@@ -16,7 +16,7 @@ public class Score extends AppCompatActivity {
         setContentView(R.layout.activity_score);
         Bundle bundle = getIntent().getExtras();
         String score = bundle.getString("score");
-        ((TextView)findViewById(R.id.Score)).setText(score);
+        ((TextView)findViewById(R.id.Score)).setText("Score: " + score);
 
         Button replay = (Button)findViewById(R.id.Replay);
         replay.setOnClickListener(new View.OnClickListener() {
@@ -26,5 +26,25 @@ public class Score extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        Button quit = (Button)findViewById(R.id.Quit);
+        quit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //find out how to kill app.
+                exitAppMethod();
+                //System.exit(0);
+            }
+        });;
+
+
+    }
+
+    public void exitAppMethod(){
+
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }
