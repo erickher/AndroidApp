@@ -31,9 +31,7 @@ public class Score extends AppCompatActivity {
         quit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //find out how to kill app.
                 exitAppMethod();
-                //System.exit(0);
             }
         });;
 
