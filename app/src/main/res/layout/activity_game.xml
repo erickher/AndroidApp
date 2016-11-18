@@ -20,18 +20,6 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:text="Red"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@android:color/holo_red_dark"
-        android:layout_below="@+id/Score"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="51dp"
-        android:layout_marginTop="108dp"
-        android:id="@+id/Red"
-        android:onClick="onClick"/>
-
-    <Button
         android:text="Quit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,5 +38,37 @@
         android:layout_toEndOf="@+id/Score"
         android:background="@color/colorPrimaryDark"
         android:onClick="onClick"/>
+
+    <Button
+        android:text="Red"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@android:color/holo_red_dark"
+        android:layout_marginTop="31dp"
+        android:id="@+id/Red"
+        android:onClick="onClick"
+        android:layout_below="@+id/Score"
+        android:layout_toStartOf="@+id/Score" />
+
+    <Button
+        android:text="Yellow"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@android:color/holo_orange_light"
+        android:id="@+id/button4"
+        android:onClick="onClick"
+        android:layout_below="@+id/Red"
+        android:layout_alignStart="@+id/Red"
+        android:layout_marginTop="36dp" />
+
+    <Button
+        android:text="Green"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/Green"
+        android:background="@android:color/holo_green_dark"
+        android:onClick="onClick"
+        android:layout_alignTop="@+id/button4"
+        android:layout_alignStart="@+id/Blue" />
 
 </RelativeLayout>
