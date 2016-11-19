@@ -80,11 +80,12 @@
         android:layout_toEndOf="@+id/Count" />
 
     <Button
-        android:text="Reply"
+        android:text="Replay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/Replay"
         android:layout_alignEnd="@+id/Yellow"
-        android:layout_below="@+id/Count" />
+        android:layout_below="@+id/Count"
+        android:onClick="replay"/>
 
 </RelativeLayout>

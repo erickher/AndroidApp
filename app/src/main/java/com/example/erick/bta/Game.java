@@ -27,6 +27,7 @@ public class Game extends AppCompatActivity {
     Button _yellow;
     Button _green;
     int _delay = 0;
+    int _replay = 0;
     TextView text;
     TextView _count;
     static ArrayList<Integer> _pattern ;
@@ -64,9 +65,18 @@ public class Game extends AppCompatActivity {
         int sizeOfPatter = _pattern.size();
         int durationLength = 1000;
         int startDelay = 2000;
-        if(_score%5 == 0){
-            durationLength = durationLength - (_score/5) * 40;
-            startDelay = startDelay - (_score/5) * 40;
+        if(_score < 5){
+            durationLength = 1000;
+            startDelay = 2000;
+        } else if(_score > 4){
+            durationLength = 800;
+            startDelay = 1500;
+        } else if(_score > 9){
+            durationLength = 600;
+            startDelay = 1000;
+        } else if(_score > 14){
+            durationLength = 100;
+            startDelay = 200;
         }
         System.out.println("about to start for loop");
         int j = 1;
@@ -220,6 +230,15 @@ public class Game extends AppCompatActivity {
         // show high score.
         // new scene to show score and ask if they wanted to play again.
         lose();
+    }
+
+    public void replay(View view) {
+        if(_replay < 4){
+            _flashBackplaying = true;
+            startAnimation();
+            _flashBackplaying = false;
+            _replay++;
+        }
     }
 
 }
