@@ -16,7 +16,15 @@ public class Score extends AppCompatActivity {
         setContentView(R.layout.activity_score);
         Bundle bundle = getIntent().getExtras();
         String score = bundle.getString("score");
-        ((TextView)findViewById(R.id.Score)).setText("Score: " + score);
+        int s = 0;
+        try{
+            s = Integer.parseInt(score);
+            ((TextView)findViewById(R.id.Score)).setText("Score: " + Integer.toString(s*5));
+        }catch (NumberFormatException e){
+            System.out.println("not a number");
+            ((TextView)findViewById(R.id.Score)).setText("Score: " + score);
+        }
+
 
         Button replay = (Button)findViewById(R.id.Replay);
         replay.setOnClickListener(new View.OnClickListener() {
