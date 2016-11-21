@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_game"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.erick.bta.Game">
+
+    <TextView
+        android:text="Score: 0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Score"
+        android:layout_marginTop="54dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Blue"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/Blue"
+        android:layout_alignBottom="@+id/Red"
+        android:layout_toEndOf="@+id/Score"
+        android:background="@color/colorPrimaryDark"
+        android:onClick="onClick"/>
+
+    <Button
+        android:text="Red"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@android:color/holo_red_dark"
+        android:layout_marginTop="31dp"
+        android:id="@+id/Red"
+        android:onClick="onClick"
+        android:layout_below="@+id/Score"
+        android:layout_toStartOf="@+id/Score" />
+
+    <Button
+        android:text="Yellow"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@android:color/holo_orange_light"
+        android:id="@+id/Yellow"
+        android:onClick="onClick"
+        android:layout_below="@+id/Red"
+        android:layout_alignStart="@+id/Red"
+        android:layout_marginTop="36dp" />
+
+    <Button
+        android:text="Green"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/Green"
+        android:background="@android:color/holo_green_dark"
+        android:onClick="onClick"
+        android:layout_alignTop="@+id/Yellow"
+        android:layout_alignStart="@+id/Blue" />
+
+    <TextView
+        android:text="Count: 0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Count"
+        android:layout_above="@+id/Quit"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Quit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/Quit"
+        android:onClick="quit"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/Count" />
+
+    <Button
+        android:text="Replay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Replay"
+        android:layout_alignEnd="@+id/Yellow"
+        android:layout_below="@+id/Count"
+        android:onClick="replay"/>
+
+</RelativeLayout>
